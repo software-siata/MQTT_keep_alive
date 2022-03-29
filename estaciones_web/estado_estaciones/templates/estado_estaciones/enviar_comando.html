@@ -1,0 +1,23 @@
+{% extends 'estado_estaciones/layout.html' %}
+
+{% block title %}Enviar Comando{% endblock %}
+
+{% block content %}
+    <div class="container mt-4 mb-4 mw-100">
+        {% include "estado_estaciones/alert.html" %}
+        <div class="card">
+            <div class="card-header text-center h1">
+                <h1>Enviar Comando a la Estacion {{ estacion }}</h1>
+            </div>
+            <div class="card-body text-center">
+                <hr>
+                <form method="POST" action="{% url 'enviar_comando' estacion=estacion %}">
+                    {% csrf_token %}
+                    {{ form }}
+                    <br>
+                    <input class="btn btn-success" type="submit" value="Enviar">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
